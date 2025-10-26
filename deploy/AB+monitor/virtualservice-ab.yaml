@@ -1,0 +1,23 @@
+# templates/virtualservice-ab.yaml
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: vllm-ab-test
+spec:
+  hosts:
+    - vllm-service.default.svc.cluster.local
+  gateways:
+    - vllm-gateway
+  http:
+    - match:
+        - headers:
+            x-ab-test: 
+              exact: "v2"
+      route:
+        - destination:
+            host: vllm-service
+            subset: v2
+    - route:
+        - destination:
+            host: vllm-service
+            subset: v1

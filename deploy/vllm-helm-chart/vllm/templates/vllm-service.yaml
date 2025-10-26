@@ -1,0 +1,16 @@
+# vllm-service.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: vllm-service
+  namespace: default
+spec:
+  selector:
+    app: vllm
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8000
+      protocol: TCP
+  type: ClusterIP

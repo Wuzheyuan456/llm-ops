@@ -1,0 +1,20 @@
+# virtual-service-canary.yaml
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: vllm-virtual-service
+spec:
+  hosts:
+  - vllm-service
+  gateways:
+  - vllm-gateway
+  http:
+  - route:
+    - destination:
+        host: vllm-service
+        subset: v1
+      weight: 90
+    - destination:
+        host: vllm-service
+        subset: v2
+      weight: 10

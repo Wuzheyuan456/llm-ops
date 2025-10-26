@@ -1,0 +1,42 @@
+# vllm-v1-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vllm-v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vllm
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: vllm
+        version: v1
+    spec:
+      containers:
+      - name: vllm
+        image: your-registry/mock-vllm:v0.1-mock  # v1 镜像
+        ports:
+        - containerPort: 8000
+        resources:
+          limits:
+            cpu: "2"
+            memory: "4Gi"
+          requests:
+            cpu: "1"
+            memory: "2Gi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vllm-v1-service
+spec:
+  selector:
+    app: vllm
+    version: v1
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000

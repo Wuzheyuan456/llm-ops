@@ -1,0 +1,28 @@
+# templates/cronjob.yaml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: vllm-sampler
+spec:
+  schedule: "0 2 * * *"  # √øÃÏ¡Ë≥ø 2 µ„
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: sampler
+              image: your-registry/vllm-service:v1
+              command: ["python", "/app/sample_queries.py"]
+              volumeMounts:
+                - name: logs
+                  mountPath: /app/logs
+                - name: annotations
+                  mountPath: /annotations
+          volumes:
+            - name: logs
+              hostPath:
+                path: /var/log/vllm
+            - name: annotations
+              hostPath:
+                path: /data/annotations
+          restartPolicy: OnFailure
