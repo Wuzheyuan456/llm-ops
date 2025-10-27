@@ -35,20 +35,16 @@
 
 ```
 school-notice-pipeline/
-├── crawler/
-│   └── notice_spider.py      # 精准爬取通知列表与正文
 ├── processor/
-│   └── clean_dedup.py        # 清洗、去重、日期标准化
-├── vector_db/
-│   └── vector_store.py       # 向量化并存入 ChromaDB
-├── label_studio/
-│   └── import_to_ls.py       # 导入数据至 Label Studio
-├── scripts/
-│   ├── run_pipeline.py       # 主流程入口
-│   └── scheduler.py          # 每日定时执行
-├── data/
-│   ├── raw/                  # 原始爬取 JSON 文件
-│   └── cleaned/              # 清洗后结构化数据
+│   ├──data/
+│   │   ├──raw/                  # 原始爬取 JSON 文件
+│   │   └──cleaned/              # 清洗后结构化数据
+│   ├── clean_dedup.py        # 清洗、去重、日期标准化
+│   └── notice_spider.py      # 精准爬取通知列表与正文
+├── vector_store.py       # 向量化并存入 ChromaDB
+├── import_to_ls.py       # 导入数据至 Label Studio
+├── run_pipeline.py       # 主流程入口
+├── scheduler.py          # 每日定时执行
 ├── vectordb/                 # ChromaDB 向量数据库存储目录
 ├── config.py                 # 配置文件（URL、路径等）
 └── requirements.txt          # 依赖包
