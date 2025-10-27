@@ -34,8 +34,7 @@
 nwnu-llm/
 ├── data/
 │   └── raw/
-│       ├── nwnu_website.json   # 官网标注数据
-│       └── .gitignore          # DVC 生成，防止 Git 跟踪大文件
+│       └── annotations.json   # 官网标注数据
 ├── models/
 │   ├── best_model.pth          # 训练好的模型权重
 │   └── best_model.pth.dvc      # DVC 指针文件
@@ -52,6 +51,7 @@ nwnu-llm/
 │   └── cache/                  # 本地缓存（不提交）
 ├── params.yaml                 # 超参配置（learning_rate, batch_size 等）
 ├── requirements.txt            # 依赖
+├── .gitignore                  # DVC 生成，防止 Git 跟踪大文件
 └── README.md                   # 你正在看的文档
 ```
 
@@ -77,13 +77,13 @@ dvc remote add -d local-storage .dvc/cache   # 使用本地缓存作为远程
 ## 🔄 核心工作流
 1. 添加新数据（模拟官网更新）
 ```bash
-vim data/raw/nwnu_website.json
-dvc add data/raw/nwnu_website.json
+vim data/raw/annotations.json
+dvc add data/raw/annotations.json
 ```
 
 2. 提交变更
 ```bash
-git add data/raw/nwnu_website.json.dvc
+git add data/raw/annotations.json.dvc
 git commit -m "feat: update nwnu website data"
 ```
 
