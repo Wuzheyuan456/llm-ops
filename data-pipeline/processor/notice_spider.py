@@ -6,9 +6,9 @@ from datetime import datetime
 import os
 from urllib.parse import urljoin
 
-# 西北大学官网基础地址
-BASE_URL = "https://www.nwu.edu.cn/"
-NOTICE_URL = "https://www.nwu.edu.cn/newtzgg-list.jsp?urltype=tree.TreeTempUrl&wbtreeid=1187"
+# 大学官网基础地址
+BASE_URL = "https://XXX/"
+NOTICE_URL = "https://XXX/newtzgg-list.jsp?urltype=tree.TreeTempUrl&wbtreeid=1187"
 
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
@@ -32,7 +32,7 @@ def parse_chinese_date(chinese_date: str) -> str:
     return "未知"
 
 def crawl_notices():
-    print("🚀 开始爬取西北大学通知公告...")
+    print("🚀 开始爬取大学通知公告...")
     response = requests.get(NOTICE_URL, headers=HEADERS)
     response.raise_for_status()
     response.encoding = 'utf-8'  # 强制 UTF-8 防止乱码
