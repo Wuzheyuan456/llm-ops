@@ -33,17 +33,17 @@
 ## 🗂️ 项目结构（单仓库三合一）
 
 ```
-campus-llm-flywheel/
+oll-ops/
 ├── data-pipeline/               # ① 通知公告数据管道
 │   ├── notice_spider.py
 │   ├── clean_dedup.py
 │   ├── vector_store.py
 │   └── import_to_ls.py
-├── process/              # ② MLOps 微调流水线
+├── program-pipline/              # ② MLOps 微调流水线
 │   ├── src/train.py            # 增量训练 + MLflow + 门禁
 │   ├── airflow/dags/train_nwnu_model.py
 │   └── models/best_model.pth.dvc
-├── llm-ops/              # ③ vLLM 灰度发布
+├── deploy/              # ③ vLLM 灰度发布
 │   ├── AB+monitor/             # 含 Prometheus 指标埋点
 │   ├── vllm-helm-chart/        # 两份 Deployment(v1/v2)
 │   └── istio-demo.yaml
