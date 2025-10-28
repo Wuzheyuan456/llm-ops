@@ -5,7 +5,7 @@
 
 📁 仓库结构
 ```
-vllm-istio-canary/
+deploy/
 ├── AB+monitor/                    # vLLM 镜像源码（含 Prometheus 指标）
 │   ├── app.py                     #加入Prometheus埋点
 │   ├──  cronjob.yaml
