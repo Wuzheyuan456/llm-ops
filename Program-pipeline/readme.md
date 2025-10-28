@@ -31,7 +31,7 @@
 
 ## 📦 项目结构
 ```
-nwnu-llm/
+Program-pipeline/
 ├── data/
 │   └── raw/
 │       └── annotations.json   # 官网标注数据
