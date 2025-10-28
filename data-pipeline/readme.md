@@ -34,7 +34,7 @@
 ## 📦 项目结构
 
 ```
-school-notice-pipeline/
+data-pipeline/
 ├── processor/
 │   ├──data/
 │   │   ├──raw/                  # 原始爬取 JSON 文件
